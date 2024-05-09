@@ -17,8 +17,17 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/tentang', function () {
+    return view('tentang');
+});
+
+Route::get('/tugas', function () {
+    return view('tugas');
+});
+
 // Route::get('/modul', function () {
 //     return view('modul');
 // });
 
-Route::get('/modul', [\App\Http\Controllers\ModulController::class, 'index']);
+Route::get('/modul', [\App\Http\Controllers\MapelController::class, 'index']);
+Route::get('/materi/{mapel_id}', [\App\Http\Controllers\MapelController::class, 'materi']);

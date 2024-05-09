@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/logo/logoo.png">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -44,14 +44,15 @@
         <!-- Header Start -->
         <div class="header-area header-transparent">
             <div class="main-header ">
-                <div class="header-bottom  header-sticky" style="background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%);">
-                    <div class="container-fluid">
+                <div class="header-bottom  header-sticky" style="background:#007bff;">
+                    <div class="container-fluid"> 
                         <div class="row align-items-center">
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
-                                <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt="">SMKS 9 Muhammadiyah</a>
-                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <img style="width: 50px; height: 50px; margin-right: 10px;" src="/img/logo/logoo.png" alt="Logo">
+                                    <a href="index.html" style="font-weight:700">SMKS 9 Muhammadiyah</a>
+                                  </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
                                 <div class="menu-wrapper d-flex align-items-center justify-content-end">
@@ -61,7 +62,7 @@
                                             <ul id="navigation"> 
                                                 <li><a href="/" class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Beranda</a></li>                                                                                         
                                                 <li><a href="/modul" class="nav-item nav-link {{ request()->is('modul') ? 'active' : '' }}">Modul</a></li>
-                                                <li><a href="about.html">Tugas</a></li>
+                                                <li><a href="/tugas">Tugas</a></li>
                                                 <!-- <li><a href="#">Blog</a>
                                                     <ul class="submenu">
                                                         <li><a href="blog.html">Blog</a></li>
@@ -69,7 +70,7 @@
                                                         <li><a href="elements.html">Element</a></li>
                                                     </ul>
                                                 </li> -->
-                                                <li><a href="contact.html">Tentang</a></li>
+                                                <li><a href="/tentang">Tentang</a></li>
                                                 <!-- Button -->
                                                 <li class="button-header margin-left "><a href="#" class="btn">Join</a></li>
                                                 <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
@@ -96,76 +97,6 @@
     </main>
     <footer>
      <div class="footer-wrappper footer-bg">
-        <!-- Footer Start-->
-        <div class="footer-area footer-padding">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-xl-4 col-lg-5 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="single-footer-caption mb-30">
-                                <!-- logo -->
-                                <div class="footer-logo mb-25">
-                                    <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
-                                </div>
-                                <div class="footer-tittle">
-                                    <div class="footer-pera">
-                                        <p>The automated process starts as soon as your clothes go into the machine.</p>
-                                    </div>
-                                </div>
-                                <!-- social -->
-                                <div class="footer-social">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Our solutions</h4>
-                                <ul>
-                                    <li><a href="#">Design & creatives</a></li>
-                                    <li><a href="#">Telecommunication</a></li>
-                                    <li><a href="#">Restaurant</a></li>
-                                    <li><a href="#">Programing</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Support</h4>
-                                <ul>
-                                    <li><a href="#">Design & creatives</a></li>
-                                    <li><a href="#">Telecommunication</a></li>
-                                    <li><a href="#">Restaurant</a></li>
-                                    <li><a href="#">Programing</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Company</h4>
-                                <ul>
-                                    <li><a href="#">Design & creatives</a></li>
-                                    <li><a href="#">Telecommunication</a></li>
-                                    <li><a href="#">Restaurant</a></li>
-                                    <li><a href="#">Programing</a></li>
-                                    <li><a href="#">Architecture</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- footer-bottom area -->
         <div class="footer-bottom-area">
             <div class="container">
