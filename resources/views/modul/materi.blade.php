@@ -1,28 +1,38 @@
 @extends('app')
 @section('content')
-    <div class="services-area services-area2 section-padding40">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-8" style="margin-top: 20px">
-                    <div class="section-tittle text-center mx-4">
-                        <h2>{{ $nama_mapel }}</h2>
-                        <p>{{ $deskripsi_mapel }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-sm-center">
-                @foreach($modul as $mod)
-                <div class="col-lg-12 col-md-6 col-sm-8">
-                    <div class="single-services mb-30" style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
-                        <div class="features-caption">
-                            <h3>{{ $mod->judul }}</h3>
-                            <p>{{ $mod->deskripsi }}</p>
-                            <a href="{{ $mod->file }}" class="btn btn-primary float-right">Unduh</a>
-                        </div>
-                    </div>
-                </div> 
-                @endforeach
-            </div>
-        </div>
+<section class="section">
+    <div class="section-header">
+      <h1>Materi</h1>
+      <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="/">Beranda</a></div>
+        <div class="breadcrumb-item">Materi</div>
+      </div>
     </div>
+
+    <div class="section-body">
+      <h2 class="section-title">{{ $nama_mapel }}</h2>
+      <p class="section-lead">{{ $deskripsi_mapel }}</p>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            @foreach($modul as $mod)
+            <div class="card-body">
+              <div class="alert alert-primary alert-has-icon p-4">
+                <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                <div class="alert-body">
+                  <div class="alert-title">{{ $mod->judul }}</div>
+                  <p>{{ $mod->deskripsi }}</p>
+                  <p class="mt-3">
+                    <a href="{{ $mod->file }}" target="_blank" class="btn bg-white text-dark">Unduh</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 @endsection

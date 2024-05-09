@@ -1,167 +1,125 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>SMKS 9 Muhammadiyah</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="/img/logo/logoo.png">
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>SMKS 9 Muhammadiyah</title>
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/slicknav.css')}}">
-    <link rel="stylesheet" href="{{asset('css/flaticon.css')}}">
-    <link rel="stylesheet" href="{{asset('css/progressbar_barfiller.css')}}">
-    <link rel="stylesheet" href="{{asset('css/gijgo.css')}}">
-    <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/animated-headline.css')}}">
-    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('css/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="{{ asset('js/modules/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('js/modules/fontawesome/css/all.min.css') }}">
+
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="{{ asset('js/modules/jqvmap/dist/jqvmap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('js/modules/summernote/summernote-bs4.css') }}">
+  <link rel="stylesheet" href="{{ asset('js/modules/owlcarousel2/dist/assets/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('js/modules/owlcarousel2/dist/assets/owl.theme.default.min.css') }}">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+<!-- Start GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-94034622-3');
+</script>
+<!-- /END GA -->
 </head>
 
 <body>
-    <!-- ? Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start -->
-    <header>
-        <!-- Header Start -->
-        <div class="header-area header-transparent">
-            <div class="main-header ">
-                <div class="header-bottom  header-sticky" style="background:#007bff;">
-                    <div class="container-fluid"> 
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2">
-                                <div style="display: flex; align-items: center;">
-                                    <img style="width: 50px; height: 50px; margin-right: 10px;" src="/img/logo/logoo.png" alt="Logo">
-                                    <a href="index.html" style="font-weight:700">SMKS 9 Muhammadiyah</a>
-                                  </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10">
-                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
-                                    <!-- Main-menu -->
-                                    <div class="main-menu d-none d-lg-block">
-                                        <nav>
-                                            <ul id="navigation"> 
-                                                <li><a href="/" class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Beranda</a></li>                                                                                         
-                                                <li><a href="/modul" class="nav-item nav-link {{ request()->is('modul') ? 'active' : '' }}">Modul</a></li>
-                                                <li><a href="/tugas">Tugas</a></li>
-                                                <!-- <li><a href="#">Blog</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="blog.html">Blog</a></li>
-                                                        <li><a href="blog_details.html">Blog Details</a></li>
-                                                        <li><a href="elements.html">Element</a></li>
-                                                    </ul>
-                                                </li> -->
-                                                <li><a href="/tentang">Tentang</a></li>
-                                                <!-- Button -->
-                                                <li class="button-header margin-left "><a href="#" class="btn">Join</a></li>
-                                                <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div> 
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Header End -->
-    </header>
-    <main>
-
-    @yield("content")
-
-    </main>
-    <footer>
-     <div class="footer-wrappper footer-bg">
-        <!-- footer-bottom area -->
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-xl-12 ">
-                            <div class="footer-copy-right text-center">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+  <div id="app">
+    <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+          </ul>
+          <div class="search-element">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+            <div class="search-backdrop"></div>
           </div>
-          <!-- Footer End-->
+        </form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle"><i class="far fa-envelope"></i></a>
+          </li>
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i class="far fa-bell"></i></a>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+            {{-- <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1"> --}}
+            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="main-sidebar sidebar-style-2">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index.html"><img src="img/logo.png" alt="">SMKS 9 Muhammadiyah</a>
+          </div>
+          <div class="sidebar-brand sidebar-brand-sm">
+            <a href="index.html">St</a>
+          </div>
+          <ul class="sidebar-menu">
+            <br>
+            <li class="menu-header">Beranda</li>
+            <li class="dropdown">
+              <a href="/" class="nav-link"><i class="fas fa-home"></i><span>Beranda</span></a></li>
+            <li class="menu-header">Menu</li>
+            <li><a href="/modul" class="nav-item nav-link"><i class="fas fa-book"></i><span>Modul</span></a></li>
+            <li><a href="/ujian" class="nav-item nav-link"><i class="fas fa-pencil-alt"></i><span>Ujian</span></a></li>
+            <li><a href="/modul" class="nav-item nav-link"><i class="fas fa-chart-bar"></i><span>Nilai</span></a></li>
+            <li class="dropdown">
+              <a href="#" class="nav-link" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
+            </li>
+          </ul>
+        </aside>
       </div>
-  </footer> 
-  <!-- Scroll Up -->
-  <div id="back-top" >
-    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-</div>
 
-<!-- JS here -->
-<script src="{{asset('js/vendor/modernizr-3.5.0.min.js')}}"></script>
-<!-- Jquery, Popper, Bootstrap -->
-<script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
-<script src="{{asset('js/popper.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<!-- Jquery Mobile Menu -->
-<script src="{{asset('js/jquery.slicknav.min.js')}}"></script>
+      <!-- Main Content -->
+      <div class="main-content">
+        @yield('content')
+      </div>
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2024 <div class="bullet"></div><a href="/">SMKS 9 Muhammadiyah</a>
+        </div>
+        <div class="footer-right">
+          
+        </div>
+      </footer>
+    </div>
+  </div>
 
-<!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="{{asset('js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('js/slick.min.js')}}"></script>
-<!-- One Page, Animated-HeadLin -->
-<script src="{{asset('js/wow.min.js')}}"></script>
-<script src="{{asset('js/animated.headline.js')}}"></script>
-<script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
+  <!-- General JS Scripts -->
+  <script src="{{ asset('js/modules/jquery.min.js') }}"></script>
+  <script src="{{ asset('js/modules/popper.js') }}"></script>
+  <script src="{{ asset('js/modules/tooltip.js') }}"></script>
+  <script src="{{ asset('js/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+  <script src="{{ asset('js/modules/moment.min.js') }}"></script>
+  <script src="{{ asset('js/stisla.js') }}"></script>
+  
+  <!-- JS Libraies -->
+  <script src="{{ asset('js/modules/jquery.sparkline.min.js') }}"></script>
+  <script src="{{ asset('js/modules/chart.min.js') }}"></script>
+  <script src="{{ asset('js/modules/owlcarousel2/dist/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('js/modules/summernote/summernote-bs4.js') }}"></script>
+  <script src="{{ asset('js/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
-<!-- Date Picker -->
-<script src="{{asset('js/gijgo.min.js')}}"></script>
-<!-- Nice-select, sticky -->
-<script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
-<script src="{{asset('js/jquery.sticky.js')}}"></script>
-<!-- Progress -->
-<script src="{{asset('js/jquery.barfiller.js')}}"></script>
-
-<!-- counter , waypoint,Hover Direction -->
-<script src="{{asset('js/jquery.counterup.min.js')}}"></script>
-<script src="{{asset('js/waypoints.min.js')}}"></script>
-<script src="{{asset('js/jquery.countdown.min.js')}}"></script>
-<script src="{{asset('js/hover-direction-snake.min.js')}}"></script>
-
-<!-- contact js -->
-<script src="{{asset('js/contact.js')}}"></script>
-<script src="{{asset('js/jquery.form.js')}}"></script>
-<script src="{{asset('js/jquery.validate.min.js')}}"></script>
-<script src="{{asset('js/mail-script.js')}}"></script>
-<script src="{{asset('js/jquery.ajaxchimp.min.js')}}"></script>
-
-<!-- Jquery Plugins, main Jquery -->	
-<script src="{{asset('js/plugins.js')}}"></script>
-<script src="{{asset('js/main.js')}}"></script>
-
+  <!-- Page Specific JS File -->
+  <script src="{{ asset('js/page/index.js') }}"></script>
+  
+  <!-- Template JS File -->
+  <script src="{{ asset('js/scripts.js') }}"></script>
+  <script src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
