@@ -30,27 +30,41 @@ class UjianController extends Controller
             'jawaban.*' => 'required', // Menyatakan setiap jawaban wajib diisi
         ]);
 
-        // Hitung total nilai
-        $totalNilai = 0;
+        // Menghitung jumlah soal
+        $totalSoal = count($request->jawaban);
+
+        // Menghitung total jawaban benar
+        $jawabanBenar = 0;
 
         foreach ($request->jawaban as $soal_id => $jawaban) {
             $soal = Soal::findOrFail($soal_id);
-
+        
             // Cek jawaban benar
             if ($jawaban === $soal->jawaban) {
-                // Jika jawaban benar, tambahkan 10 ke total nilai
-                $totalNilai += 10;
+                $jawabanBenar++;
             }
         }
+
+        // Menghitung nilai berdasarkan persentase jawaban benar
+        $nilaiPersentase = ($jawabanBenar / $totalSoal) * 100;    
 
         // Simpan nilai ke dalam database
         $nilai = new Nilai();
         $nilai->ujian_id = $request->ujian_id;
         $nilai->user_id = 1;
-        $nilai->nilai = $totalNilai;
+        $nilai->tanggal = now();
+        $nilai->nilai = $nilaiPersentase;
         $nilai->save();
 
         // Redirect atau tampilkan pesan berhasil
-        return redirect()->route('home')->with('success', 'Jawaban berhasil disimpan. Nilai Anda: ' . $totalNilai);
+        return redirect()->route('hasil.ujian', ['id' => $nilai->id])->with('success', 'Jawaban berhasil disimpan. Nilai Anda: ' . $nilaiPersentase);
+    }
+    public function show($id)
+    {
+        // Cari nilai berdasarkan ID
+        $nilai = Nilai::findOrFail($id);
+
+        // Tampilkan halaman dengan data nilai
+        return view('ujian.hasil', compact('nilai'));
     }
 }

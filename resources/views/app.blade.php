@@ -74,12 +74,10 @@
             <li class="dropdown">
               <a href="/" class="nav-link"><i class="fas fa-home"></i><span>Beranda</span></a></li>
             <li class="menu-header">Menu</li>
+            <li><a href="/kalender" class="nav-item nav-link"><i class="fas fa-calendar"></i><span>Kalender Akademik</span></a></li>
             <li><a href="/modul" class="nav-item nav-link"><i class="fas fa-book"></i><span>Modul</span></a></li>
             <li><a href="/ujian" class="nav-item nav-link"><i class="fas fa-pencil-alt"></i><span>Ujian</span></a></li>
-            <li><a href="/modul" class="nav-item nav-link"><i class="fas fa-chart-bar"></i><span>Nilai</span></a></li>
-            <li class="dropdown">
-              <a href="#" class="nav-link" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
-            </li>
+            <li><a href="/nilai" class="nav-item nav-link"><i class="fas fa-chart-bar"></i><span>Nilai</span></a></li>
           </ul>
         </aside>
       </div>

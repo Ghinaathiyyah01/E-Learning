@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Ujian;
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nilais', function (Blueprint $table) {
+        Schema::create('kalenders', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Ujian::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->date('tanggal');
-            $table->string('nilai');
+            $table->string('periode');
+            $table->string('gambar');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nilais');
+        Schema::dropIfExists('kalenders');
     }
 };

@@ -35,3 +35,6 @@ Route::get('/materi/{mapel_id}', [\App\Http\Controllers\MapelController::class, 
 Route::get('/ujian', [\App\Http\Controllers\UjianController::class, 'index']);
 Route::get('/ujian/{ujian_id}', [UjianController::class, 'ujian'])->name('ujian.index');
 Route::post('/ujian/submit', [UjianController::class, 'submit'])->name('ujian.submit');
+Route::get('/hasil_ujian/{id}', [UjianController::class, 'show'])->name('hasil.ujian');
+Route::get('/kalender', [\App\Http\Controllers\KalenderController::class, 'index']);
+Route::get('/nilai', [\App\Http\Controllers\NilaiController::class, 'index']);
