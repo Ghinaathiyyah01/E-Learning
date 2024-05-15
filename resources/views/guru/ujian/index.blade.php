@@ -2,10 +2,10 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Modul</h1>
+            <h1>Ujian</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="/guru">Beranda</a></div>
-                <div class="breadcrumb-item">Modul</div>
+                <div class="breadcrumb-item">Ujian</div>
             </div>
         </div>
         <div class="section-body">
@@ -13,28 +13,27 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4><a href="/guru/modul/create" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Tambah Data</a></h4>
+                            <h4><a href="/guru/ujian/create" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Tambah Data</a></h4>
                         </div>
                         <div class="card-body">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Gambar</th>
-                                        <th scope="col">Nama</th>
+                                        <th scope="col">Nama Ujian</th>
                                         <th scope="col">Deskripsi</th>
+                                        <th scope="col">Waktu Ujian</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    @foreach ($mapel as $map)
+                                    @foreach ($ujian as $uji)
                                     <tr>
                                         <th scope="row">{{ $no++ }}</th>
-                                        <td><img src="{{ asset('Mapel Gambar') . '/' . $map->gambar }}"
-                                            alt="" class="img-fluid" width="100"></td>
-                                        <td>{{ $map->nama }}</td>
-                                        <td>{{ $map->deskripsi }}</td>
+                                        <td>{{ $uji->nama }}</td>
+                                        <td>{{ $uji->deskripsi }}</td>
+                                        <td>{{ $uji->waktu_ujian }}</td>
                                         <td>
                                             <!-- Dropdown Menu -->
                                             <div class="dropdown">
@@ -42,9 +41,9 @@
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="{{ route('submodul.index', ['mapel_id' => $map->id]) }}">Tambah Submodul</a>
-                                                    <a class="dropdown-item" href="/modul/update/{{ $map->id }}">Edit</a>
-                                                    <form action="{{ route('modul.delete', $map->id)}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus item ini?');">
+                                                    <a class="dropdown-item" href="{{ route('soal.index', ['ujian_id' => $uji->id]) }}">Soal</a>
+                                                    <a class="dropdown-item" href="/ujian/update/{{ $uji->id }}">Edit</a>
+                                                    <form action="{{ route('ujian.delete', $uji->id)}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus item ini?');">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="dropdown-item">Hapus</button>

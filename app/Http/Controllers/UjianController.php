@@ -67,4 +67,60 @@ class UjianController extends Controller
         // Tampilkan halaman dengan data nilai
         return view('user.ujian.hasil', compact('nilai'));
     }
+    public function indexGuru(){
+        $ujian = Ujian::all();
+        return view('guru.ujian.index', compact('ujian'));
+    }
+    public function create()
+    {
+        return view('guru.ujian.create');
+    }
+    public function store(Request $request)
+    {
+        // Validasi data yang diterima dari request
+        $validatedData = $request->validate([
+            'nama' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'waktu_ujian' => 'required|date',
+        ]);
+
+        // Simpan data ujian baru ke dalam database
+        $ujian = new Ujian();
+        $ujian->nama = $validatedData['nama'];
+        $ujian->deskripsi = $validatedData['deskripsi'];
+        $ujian->waktu_ujian = $validatedData['waktu_ujian'];
+        $ujian->save();
+
+        // Redirect ke halaman yang sesuai atau berikan respon JSON sesuai kebutuhan
+        return redirect()->route('guru.ujian.index')->with('success', 'Ujian berhasil dibuat.');
+    }
+    public function edit($id)
+    {
+        $uji = Ujian::find($id);
+        return view('guru.ujian.update', compact(['uji']));
+    }
+    public function update(Request $request, $id)
+    {
+        // Validasi data yang diterima dari request
+        $validatedData = $request->validate([
+            'nama' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'waktu_ujian' => 'required|date',
+        ]);
+
+        // Temukan ujian berdasarkan ID dan perbarui data
+        $ujian = Ujian::findOrFail($id);
+        $ujian->nama = $validatedData['nama'];
+        $ujian->deskripsi = $validatedData['deskripsi'];
+        $ujian->waktu_ujian = $validatedData['waktu_ujian'];
+        $ujian->save();
+
+        // Redirect ke halaman yang sesuai atau berikan respon JSON sesuai kebutuhan
+        return redirect()->route('guru.ujian.index')->with('success', 'Ujian berhasil diperbarui.');
+    }
+    public function delete($id){
+        $ujian = Ujian::find($id);
+        $ujian->delete();
+        return redirect()->route('guru.ujian.index')->with('success', 'Informasi berhasil dihapus.');
+    }
 }

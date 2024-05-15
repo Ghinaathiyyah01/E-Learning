@@ -12,4 +12,8 @@ class Nilai extends Model
     {
         return $this->belongsTo(Ujian::class, 'ujian_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
