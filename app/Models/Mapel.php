@@ -9,6 +9,12 @@ use App\Models\Modul;
 class Mapel extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama',
+        'gambar',
+        'deskripsi',
+        'user_id',
+    ];
     public function moduls()
     {
         return $this->hasMany(Modul::class);

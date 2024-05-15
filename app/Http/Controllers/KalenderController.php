@@ -9,6 +9,6 @@ class KalenderController extends Controller
 {
     public function index(){
         $calender = Kalender::all();
-        return view('kalender', compact('calender'));
+        return view('user.kalender', compact('calender'));
     }
 }

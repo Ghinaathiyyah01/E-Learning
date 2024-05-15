@@ -11,7 +11,7 @@ class UjianController extends Controller
 {
     public function index(){
         $ujian = Ujian::all();
-        return view('ujian.index', compact('ujian'));
+        return view('user.ujian.index', compact('ujian'));
     }
     public function ujian($id)
     {
@@ -21,7 +21,7 @@ class UjianController extends Controller
         // Mengambil pertanyaan-pertanyaan ujian
         $soal = Soal::where('ujian_id', $id)->get();
 
-        return view('ujian.ujian', compact('ujian', 'soal'));
+        return view('user.ujian.ujian', compact('ujian', 'soal'));
     }
     public function submit(Request $request)
     {
@@ -65,6 +65,6 @@ class UjianController extends Controller
         $nilai = Nilai::findOrFail($id);
 
         // Tampilkan halaman dengan data nilai
-        return view('ujian.hasil', compact('nilai'));
+        return view('user.ujian.hasil', compact('nilai'));
     }
 }

@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.siswa')
 
 @section('content')
     <div class="card">

@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.siswa')
 @section('content')
 <section class="section">
     <div class="row">

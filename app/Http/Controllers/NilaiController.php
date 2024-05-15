@@ -13,6 +13,6 @@ class NilaiController extends Controller
         $nilai = Nilai::all();
 
         // Mengirimkan data nilai ke tampilan
-        return view('nilai', compact('nilai'));
+        return view('user.nilai', compact('nilai'));
     }
 }
