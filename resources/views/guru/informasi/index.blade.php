@@ -1,4 +1,4 @@
-@extends('layouts.siswa')
+@extends('layouts.guru')
 @section('content')
     <section class="section">
         <div class="section-header">

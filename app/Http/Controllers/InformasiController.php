@@ -13,7 +13,7 @@ class InformasiController extends Controller
         $informasi = Informasi::orderBy('tanggal', 'desc')->get();
         return view('user.informasi', compact('informasi'));
     }
-    public function indexGuru(){
+    public function Guru(){
         $informasi = Informasi::orderBy('tanggal', 'desc')->get();
         return view('guru.informasi.index', compact('informasi'));
     }
