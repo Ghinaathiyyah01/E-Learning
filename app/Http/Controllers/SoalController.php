@@ -12,8 +12,16 @@ class SoalController extends Controller
     {
         session(['ujian_id' => $ujian_id]);
         $soal = Soal::where('ujian_id', $ujian_id)->get();
-        return view('guru.soal.index', compact('soal'));
+        return view('guru.soal.index', compact('soal', 'ujian_id'));
     }
+
+    public function show($ujian_id)
+    {
+        $soal = Soal::where('ujian_id', $ujian_id)->get();
+        $ujian = Ujian::findOrFail($ujian_id);
+        return view('guru.soal.preview', compact('soal', 'ujian'));
+    }
+
     public function create()
     {
         return view('guru.soal.create');
@@ -86,7 +94,8 @@ class SoalController extends Controller
         // Redirect ke halaman yang sesuai atau berikan respon JSON sesuai kebutuhan
         return redirect()->route('soal.index', ['ujian_id' => $ujianId])->with('success', 'Soal berhasil diperbarui.');
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $soal = Soal::find($id);
         $soal->delete();
         $ujianId = session('ujian_id');

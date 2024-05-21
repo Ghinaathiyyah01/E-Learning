@@ -46,42 +46,48 @@ Route::get('/hasil_ujian/{id}', [UjianController::class, 'show'])->name('hasil.u
 Route::get('/informasi', [\App\Http\Controllers\InformasiController::class, 'index']);
 Route::get('/nilai', [\App\Http\Controllers\NilaiController::class, 'index']);
 
-Route::get('/guru/informasi', [\App\Http\Controllers\InformasiController::class, 'Guru'])->name('guru.informasi.index')->middleware(['auth','admin']);
-Route::get('/guru/informasi/create', [\App\Http\Controllers\InformasiController::class, 'create'])->middleware(['auth','admin']);
-Route::post('/guru/informasi/store', [\App\Http\Controllers\InformasiController::class, 'store'])->name('guru.informasi.store')->middleware(['auth','admin']);
-Route::delete('/guru/informasi/{id}', [InformasiController::class, 'delete'])->name('informasi.delete')->middleware(['auth','admin']);
-Route::get('/informasi/update/{id}', [\App\Http\Controllers\InformasiController::class, 'edit'])->middleware(['auth','admin']);
-Route::put('/informasi/{id}', [\App\Http\Controllers\InformasiController::class, 'update'])->middleware(['auth','admin']);
+Route::get('/guru/data-siswa', [\App\Http\Controllers\SiswaController::class, 'index'])->name('guru.data-siswa.index')->middleware(['auth', 'admin']);
+Route::get('/guru/data-siswa/update/{id}', [\App\Http\Controllers\SiswaController::class, 'edit'])->middleware(['auth', 'admin']);
+Route::put('/guru/data-siswa/{id}', [\App\Http\Controllers\SiswaController::class, 'update'])->middleware(['auth', 'admin']);
+Route::delete('/guru/data-siswa/{id}', [\App\Http\Controllers\SiswaController::class, 'delete'])->name('guru.data-siswa.delete')->middleware(['auth', 'admin']);
 
-Route::get('/guru/modul', [\App\Http\Controllers\MapelController::class, 'indexGuru'])->name('guru.modul.index')->middleware(['auth','admin']);
-Route::get('/guru/modul/create', [\App\Http\Controllers\MapelController::class, 'create'])->middleware(['auth','admin']);
-Route::post('/guru/modul/store', [\App\Http\Controllers\MapelController::class, 'store'])->name('guru.modul.store')->middleware(['auth','admin']);
-Route::get('/modul/update/{id}', [\App\Http\Controllers\MapelController::class, 'edit'])->middleware(['auth','admin']);
-Route::put('/modul/{id}', [\App\Http\Controllers\MapelController::class, 'update'])->middleware(['auth','admin']);
-Route::delete('/guru/modul/{id}', [MapelController::class, 'delete'])->name('modul.delete')->middleware(['auth','admin']);
+Route::get('/guru/informasi', [\App\Http\Controllers\InformasiController::class, 'Guru'])->name('guru.informasi.index')->middleware(['auth', 'admin']);
+Route::get('/guru/informasi/create', [\App\Http\Controllers\InformasiController::class, 'create'])->middleware(['auth', 'admin']);
+Route::post('/guru/informasi/store', [\App\Http\Controllers\InformasiController::class, 'store'])->name('guru.informasi.store')->middleware(['auth', 'admin']);
+Route::delete('/guru/informasi/{id}', [InformasiController::class, 'delete'])->name('informasi.delete')->middleware(['auth', 'admin']);
+Route::get('/informasi/update/{id}', [\App\Http\Controllers\InformasiController::class, 'edit'])->middleware(['auth', 'admin']);
+Route::put('/informasi/{id}', [\App\Http\Controllers\InformasiController::class, 'update'])->middleware(['auth', 'admin']);
 
-Route::get('/submodul/{mapel_id}', [ModulController::class, 'indexGuru'])->name('submodul.index')->middleware(['auth','admin']);
-Route::get('/guru/submodul/create', [\App\Http\Controllers\ModulController::class, 'create'])->middleware(['auth','admin']);
-Route::post('/submodul/store', [ModulController::class, 'store'])->name('modul.store')->middleware(['auth','admin']);
-Route::get('/submodul/update/{id}', [\App\Http\Controllers\ModulController::class, 'edit'])->middleware(['auth','admin']);
-Route::put('/submodul/{id}', [\App\Http\Controllers\ModulController::class, 'update'])->middleware(['auth','admin']);
-Route::delete('/guru/submodul/{id}', [ModulController::class, 'delete'])->name('submodul.delete')->middleware(['auth','admin']);
+Route::get('/guru/modul', [\App\Http\Controllers\MapelController::class, 'indexGuru'])->name('guru.modul.index')->middleware(['auth', 'admin']);
+Route::get('/guru/modul/create', [\App\Http\Controllers\MapelController::class, 'create'])->middleware(['auth', 'admin']);
+Route::post('/guru/modul/store', [\App\Http\Controllers\MapelController::class, 'store'])->name('guru.modul.store')->middleware(['auth', 'admin']);
+Route::get('/modul/update/{id}', [\App\Http\Controllers\MapelController::class, 'edit'])->middleware(['auth', 'admin']);
+Route::put('/modul/{id}', [\App\Http\Controllers\MapelController::class, 'update'])->middleware(['auth', 'admin']);
+Route::delete('/guru/modul/{id}', [MapelController::class, 'delete'])->name('modul.delete')->middleware(['auth', 'admin']);
 
-Route::get('/guru/ujian', [\App\Http\Controllers\UjianController::class, 'indexGuru'])->name('guru.ujian.index')->middleware(['auth','admin']);
-Route::get('/guru/ujian/create', [\App\Http\Controllers\UjianController::class, 'create'])->middleware(['auth','admin']);
-Route::post('/guru/ujian/store', [\App\Http\Controllers\UjianController::class, 'store'])->name('guru.ujian.store')->middleware(['auth','admin']);
-Route::get('/ujian/update/{id}', [\App\Http\Controllers\UjianController::class, 'edit'])->middleware(['auth','admin']);
-Route::put('/ujian/{id}', [\App\Http\Controllers\UjianController::class, 'update'])->middleware(['auth','admin']);
-Route::delete('/guru/ujian/{id}', [UjianController::class, 'delete'])->name('ujian.delete')->middleware(['auth','admin']);
+Route::get('/submodul/{mapel_id}', [ModulController::class, 'indexGuru'])->name('submodul.index')->middleware(['auth', 'admin']);
+Route::get('/guru/submodul/create', [\App\Http\Controllers\ModulController::class, 'create'])->middleware(['auth', 'admin']);
+Route::post('/submodul/store', [ModulController::class, 'store'])->name('modul.store')->middleware(['auth', 'admin']);
+Route::get('/submodul/update/{id}', [\App\Http\Controllers\ModulController::class, 'edit'])->middleware(['auth', 'admin']);
+Route::put('/submodul/{id}', [\App\Http\Controllers\ModulController::class, 'update'])->middleware(['auth', 'admin']);
+Route::delete('/guru/submodul/{id}', [ModulController::class, 'delete'])->name('submodul.delete')->middleware(['auth', 'admin']);
 
-Route::get('/soal/{ujian_id}', [SoalController::class, 'indexGuru'])->name('soal.index')->middleware(['auth','admin']);
-Route::get('/guru/soal/create', [\App\Http\Controllers\SoalController::class, 'create'])->middleware(['auth','admin']);
-Route::post('/soal/store', [SoalController::class, 'store'])->name('soal.store')->middleware(['auth','admin']);
-Route::get('/soal/update/{id}', [\App\Http\Controllers\SoalController::class, 'edit'])->middleware(['auth','admin']);
-Route::put('/soal/{id}', [\App\Http\Controllers\SoalController::class, 'update'])->middleware(['auth','admin']);
-Route::delete('/guru/soal/{id}', [SoalController::class, 'delete'])->name('soal.delete')->middleware(['auth','admin']);
+Route::get('/guru/ujian', [\App\Http\Controllers\UjianController::class, 'indexGuru'])->name('guru.ujian.index')->middleware(['auth', 'admin']);
+Route::get('/guru/ujian/create', [\App\Http\Controllers\UjianController::class, 'create'])->middleware(['auth', 'admin']);
+Route::post('/guru/ujian/store', [\App\Http\Controllers\UjianController::class, 'store'])->name('guru.ujian.store')->middleware(['auth', 'admin']);
+Route::get('/ujian/update/{id}', [\App\Http\Controllers\UjianController::class, 'edit'])->middleware(['auth', 'admin']);
+Route::put('/ujian/{id}', [\App\Http\Controllers\UjianController::class, 'update'])->middleware(['auth', 'admin']);
+Route::delete('/guru/ujian/{id}', [UjianController::class, 'delete'])->name('ujian.delete')->middleware(['auth', 'admin']);
 
-Route::get('/guru/nilai', [\App\Http\Controllers\NilaiController::class, 'indexGuru'])->name('guru.nilai.index')->middleware(['auth','admin']);
-Route::delete('/guru/nilai/{id}', [NilaiController::class, 'delete'])->name('nilai.delete')->middleware(['auth','admin']);
+Route::get('/soal/{ujian_id}', [SoalController::class, 'indexGuru'])->name('soal.index')->middleware(['auth', 'admin']);
+Route::get('/guru/soal/preview/{ujian_id}', [\App\Http\Controllers\SoalController::class, 'show'])->name('guru.preview.index')->middleware(['auth', 'admin']);
+Route::get('/guru/soal/create', [\App\Http\Controllers\SoalController::class, 'create'])->middleware(['auth', 'admin']);
+Route::post('/soal/store', [SoalController::class, 'store'])->name('soal.store')->middleware(['auth', 'admin']);
+Route::get('/soal/update/{id}', [\App\Http\Controllers\SoalController::class, 'edit'])->middleware(['auth', 'admin']);
+Route::put('/soal/{id}', [\App\Http\Controllers\SoalController::class, 'update'])->middleware(['auth', 'admin']);
+Route::delete('/guru/soal/{id}', [SoalController::class, 'delete'])->name('soal.delete')->middleware(['auth', 'admin']);
 
-require __DIR__.'/auth.php';
+Route::get('/guru/nilai', [\App\Http\Controllers\NilaiController::class, 'indexGuru'])->name('guru.nilai.index')->middleware(['auth', 'admin']);
+Route::delete('/guru/nilai/{id}', [NilaiController::class, 'delete'])->name('nilai.delete')->middleware(['auth', 'admin']);
+
+require __DIR__ . '/auth.php';

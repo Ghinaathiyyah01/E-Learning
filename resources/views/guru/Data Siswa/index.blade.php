@@ -2,46 +2,36 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Soal</h1>
+            <h1>Data Siswa</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="/guru">Beranda</a></div>
-                <div class="breadcrumb-item">Soal</div>
+                <div class="breadcrumb-item">Data Siswa</div>
             </div>
         </div>
         <div class="section-body">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header d-flex justify-content-between">
-                            <h4><a href="/guru/soal/create" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Tambah
-                                    Data</a></h4>
-                                    <h4><a href="{{ url('/guru/soal/preview/' . $ujian_id) }}" class="btn btn-primary"><i class="fas fa-eye"></i> Lihat Preview Soal</a></h4>
-                        </div>
+                        {{-- <div class="card-header">
+                        <h4><a href="/guru/ujian/create" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Tambah Data</a></h4>
+                    </div> --}}
                         <div class="card-body">
                             <table class="table table-hover">
                                 <thead>
-                                    <tr> 
+                                    <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Pertanyaan</th>
-                                        <th scope="col">Pilihan 1</th>
-                                        <th scope="col">Pilihan 2</th>
-                                        <th scope="col">Pilihan 3</th>
-                                        <th scope="col">Pilihan 4</th>
-                                        <th scope="col">Jawaban</th>
+                                        <th scope="col">Nama Siswa</th>
+                                        <th scope="col">E-mail</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    @foreach ($soal as $sol)
+                                    @foreach ($siswa as $s)
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>
-                                            <td>{{ $sol->pertanyaan }}</td>
-                                            <td>{{ $sol->pilihan1 }}</td>
-                                            <td>{{ $sol->pilihan2 }}</td>
-                                            <td>{{ $sol->pilihan3 }}</td>
-                                            <td>{{ $sol->pilihan4 }}</td>
-                                            <td>{{ $sol->jawaban }}</td>
+                                            <td>{{ $s->name }}</td>
+                                            <td>{{ $s->email }}</td>
                                             <td>
                                                 <!-- Dropdown Menu -->
                                                 <div class="dropdown">
@@ -51,9 +41,8 @@
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item"
-                                                            href="/soal/update/{{ $sol->id }}">Edit</a>
-                                                        <form action="{{ route('soal.delete', $sol->id) }}" method="POST"
+                                                        <a class="dropdown-item" href="/guru/data-siswa/update/{{ $s->id }}">Edit</a>
+                                                        <form action="{{ route('guru.data-siswa.delete', $s->id) }}" method="POST"
                                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus item ini?');">
                                                             @csrf
                                                             @method('DELETE')

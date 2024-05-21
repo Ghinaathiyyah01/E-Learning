@@ -14,7 +14,7 @@ class UjianController extends Controller
         return view('user.ujian.index', compact('ujian'));
     }
     public function ujian($id)
-    {
+    { 
         // Mengambil informasi ujian
         $ujian = Ujian::findOrFail($id);
 

@@ -98,11 +98,11 @@
                     <ul class="sidebar-menu">
                         <li class="menu-header">Beranda</li>
                         <li class="dropdown">
-                            <a href="/guru" class="nav-link"><i class="fas fa-home"></i><span>Beranda</span></a>
+                            <a href="/home" class="nav-link"><i class="fas fa-home"></i><span>Beranda</span></a>
                         </li>
                         <li class="menu-header">Menu</li>
                         <li><a href="/guru/informasi" class="nav-item nav-link"><i class="fas fa-bullhorn"></i><span>Informasi</span></a></li>
-                        <li><a href="/kalender" class="nav-item nav-link"><i class="fas fa-calendar"></i><span>Data Siswa</span></a></li>
+                        <li><a href="/guru/data-siswa" class="nav-item nav-link"><i class="fas fa-users"></i><span>Data Siswa</span></a></li>
                         <li><a href="/guru/modul" class="nav-item nav-link"><i class="fas fa-calendar"></i><span>Modul Pembelajaran</span></a></li>
                         <li><a href="/guru/ujian" class="nav-item nav-link"><i
                                     class="fas fa-book"></i><span>Ujian</span></a></li>
