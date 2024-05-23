@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\GuruChart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(GuruChart $guruchart)
     {
+        $guruchart = $guruchart->build();
         if(Auth::id())
         {
             $role=Auth()->user()->role;
@@ -20,7 +22,7 @@ class HomeController extends Controller
 
             elseif($role=='admin')
             {
-                return view('guru.home');
+                return view('guru.home', compact('guruchart'));
             }
 
             else{
