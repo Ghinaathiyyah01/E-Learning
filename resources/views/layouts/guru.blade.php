@@ -7,6 +7,8 @@
     <title>SMKS 9 Muhammadiyah</title>
 
     <!-- General CSS Files -->
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <link rel="stylesheet" href="{{ asset('js/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/modules/fontawesome/css/all.min.css') }}">
 
@@ -16,7 +18,9 @@
     <link rel="stylesheet" href="{{ asset('js/modules/owlcarousel2/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/modules/owlcarousel2/dist/assets/owl.theme.default.min.css') }}">
 
+
     <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('/css/apex-charts.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components.css') }}">
     <!-- Start GA -->
@@ -59,7 +63,7 @@
                     </li>
                     <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                             class="nav-link notification-toggle nav-link-lg"><i class="far fa-bell"></i></a>
-                    </li>
+                    </li> 
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             {{-- <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1"> --}}
@@ -71,9 +75,9 @@
                             </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-    
+
                                 <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                                     this.closest('form').submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
@@ -101,9 +105,12 @@
                             <a href="/home" class="nav-link"><i class="fas fa-home"></i><span>Beranda</span></a>
                         </li>
                         <li class="menu-header">Menu</li>
-                        <li><a href="/guru/informasi" class="nav-item nav-link"><i class="fas fa-bullhorn"></i><span>Informasi</span></a></li>
-                        <li><a href="/guru/data-siswa" class="nav-item nav-link"><i class="fas fa-users"></i><span>Data Siswa</span></a></li>
-                        <li><a href="/guru/modul" class="nav-item nav-link"><i class="fas fa-calendar"></i><span>Modul Pembelajaran</span></a></li>
+                        <li><a href="/guru/informasi" class="nav-item nav-link"><i
+                                    class="fas fa-bullhorn"></i><span>Informasi</span></a></li>
+                        <li><a href="/guru/data-siswa" class="nav-item nav-link"><i class="fas fa-users"></i><span>Data
+                                    Siswa</span></a></li>
+                        <li><a href="/guru/modul" class="nav-item nav-link"><i class="fas fa-calendar"></i><span>Modul
+                                    Pembelajaran</span></a></li>
                         <li><a href="/guru/ujian" class="nav-item nav-link"><i
                                     class="fas fa-book"></i><span>Ujian</span></a></li>
                         <li><a href="/guru/nilai" class="nav-item nav-link"><i
@@ -147,6 +154,7 @@
     <script src="{{ asset('js/page/index.js') }}"></script>
 
     <!-- Template JS File -->
+    script src="{{ asset('js/apexcharts.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
 </body>
