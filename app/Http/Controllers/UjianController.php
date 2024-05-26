@@ -6,9 +6,10 @@ use App\Models\Nilai;
 use App\Models\Soal;
 use App\Models\Ujian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UjianController extends Controller
-{
+{ 
     public function index(){
         $ujian = Ujian::all();
         return view('user.ujian.index', compact('ujian'));
@@ -51,7 +52,7 @@ class UjianController extends Controller
         // Simpan nilai ke dalam database
         $nilai = new Nilai();
         $nilai->ujian_id = $request->ujian_id;
-        $nilai->user_id = 1;
+        $nilai->user_id = Auth::id();
         $nilai->tanggal = now();
         $nilai->nilai = $nilaiPersentase;
         $nilai->save();

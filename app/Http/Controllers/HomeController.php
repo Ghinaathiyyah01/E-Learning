@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Charts\GuruChart;
+use App\Models\Informasi;
+use App\Models\Modul;
 use App\Models\Nilai;
+use App\Models\Ujian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -56,7 +59,14 @@ class HomeController extends Controller
             $role = Auth()->user()->role;
 
             if ($role == 'user') {
-                return view('user.home');
+                $jumlahInformasi = Informasi::count();
+
+                // Menghitung jumlah modul
+                $jumlahModul = Modul::count();
+
+                // Menghitung jumlah ujian
+                $jumlahUjian = Ujian::count(); 
+                return view('user.home', compact('jumlahInformasi', 'jumlahModul', 'jumlahUjian'));
             } elseif ($role == 'admin') {
                 return view('guru.home', ['result' => $outputData]);
             } else {
