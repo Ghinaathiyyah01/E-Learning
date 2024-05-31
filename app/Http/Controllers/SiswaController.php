@@ -7,10 +7,21 @@ use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+    $cari = $request->query('cari');
+    
+    if (!empty($cari)) {
+        $siswa = User::where('role', 'user')
+            ->where(function($query) use ($cari) {
+                $query->where('name', 'like', '%' . $cari . '%')
+                      ->orWhere('email', 'like', '%' . $cari . '%'); // Misalnya, menambahkan pencarian di email juga
+            })
+            ->get();
+    } else {
         $siswa = User::where('role', 'user')->get();
-        return view('guru.Data Siswa.index', compact('siswa'));
+    }
+        return view('guru.Data Siswa.index', compact('siswa', 'cari'));
     }
 
     public function edit($id)
@@ -44,6 +55,6 @@ class SiswaController extends Controller
     public function delete($id){
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('guru.Data Siswa.index')->with('success', 'Data Siswa berhasil dihapus.');
+        return redirect()->route('guru.data-siswa.index')->with('success', 'Data Siswa berhasil dihapus.');
     }
 }

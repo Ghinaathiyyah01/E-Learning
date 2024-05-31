@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mapel;
 use App\Models\Modul;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MapelController extends Controller
 {
@@ -33,6 +34,7 @@ class MapelController extends Controller
     }
     public function store(Request $request)
     {
+        // dd($request);
         $data = $request->validate([
             'nama' => 'required|string|max:255',
             'deskripsi' => 'required|string',
@@ -50,12 +52,16 @@ class MapelController extends Controller
         }
     
         // Menambahkan user_id ke data yang akan disimpan
-        $data['user_id'] = 1; // Set default user_id menjadi 1
+        $loggedInUser = Auth::user();
+
+// Mengatur nilai 'user_id' di dalam $data dengan nilai user_id pengguna yang login
+$data['user_id'] = $loggedInUser->id; // Set default user_id menjadi 1
     
         // Membuat instance Mapel dan menyimpan data
+        // dd($data);
         $mapel = Mapel::create($data);
 
-        return redirect('/guru/modul')->with('success', 'Lapangan berhasil ditambahkan');
+        return redirect('/guru-modul')->with('success', 'Lapangan berhasil ditambahkan');
     }
     public function edit($id)
     {

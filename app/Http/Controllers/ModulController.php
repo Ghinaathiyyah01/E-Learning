@@ -9,6 +9,7 @@ class ModulController extends Controller
 {
     public function index()
     {
+        
         $modul = Modul::all();
         return view('modul', compact('modul'));
     }

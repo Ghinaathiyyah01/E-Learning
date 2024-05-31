@@ -10,13 +10,12 @@ use App\Models\Ujian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class HomeController extends Controller
 {
-    public function index(GuruChart $guruchart)
+    public function index()
     {
-        $guruchart = $guruchart->build();
-
         $nilaiData = DB::table('nilais')
             ->join('ujians', 'nilais.ujian_id', '=', 'ujians.id')
             ->select('nilais.ujian_id', 'nilais.nilai', 'ujians.nama as ujian_nama')
@@ -29,12 +28,12 @@ class HomeController extends Controller
             });
         });
 
-        // Definisikan warna berdasarkan ujian_nama
+        // Define colors based on ujian_nama
         $colorsByUjianNama = [
-            'Ujian Tengah Semester' => '#ffab00', // Contoh: Warna kuning untuk Ujian 1
-            'uas' => '#007bff', // Contoh: Warna biru untuk Ujian 2
-            'Ujian 3' => '#71dd37', // Contoh: Warna hijau untuk Ujian 3
-            // Tambahkan lebih banyak warna sesuai kebutuhan
+            'Ujian Tengah Semester' => '#ffab00', // Yellow for Ujian Tengah Semester
+            'Ujian Akhir Semester' => '#007bff', // Blue for UAS
+            'Kuis 1' => '#71dd37', // Green for Ujian 3
+            // Add more colors as needed
         ];
 
         $outputData = [];
@@ -42,19 +41,27 @@ class HomeController extends Controller
         foreach ($result as $ujianId => $nilaiGroup) {
             $ujianNama = $nilaiData->firstWhere('ujian_id', $ujianId)->ujian_nama;
             $color = $colorsByUjianNama[$ujianNama] ?? '#8592a3'; // Default color if no match found
+
+            // Ensure the outputData has an entry for this ujian_nama
+            if (!isset($outputData[$ujianNama])) {
+                $outputData[$ujianNama] = [];
+            }
+
+            // Convert the keys (nilai) to integers for sorting
+            $nilaiGroup = new Collection($nilaiGroup->toArray());
+            $nilaiGroup = $nilaiGroup->sortBy(function ($value, $key) {
+                return (int) $key; // Convert to integer for sorting
+            });
+
             foreach ($nilaiGroup as $nilai => $count) {
-                $outputData[] = [
-                    'x' => 'Nilai ' . $nilai. ' : ' .$ujianNama ,
+                $outputData[$ujianNama][] = [
+                    'x' => 'Nilai ' . $nilai,
                     'y' => $count,
                     'color' => $color,
                 ];
             }
         }
 
-        // echo json_encode(['data' => $outputData], JSON_PRETTY_PRINT);
-        // dd($outputData);
-        // // dd($proges);
-        // return view('landing-page', ['result' => $outputData]);
         if (Auth::id()) {
             $role = Auth()->user()->role;
 
@@ -65,7 +72,7 @@ class HomeController extends Controller
                 $jumlahModul = Modul::count();
 
                 // Menghitung jumlah ujian
-                $jumlahUjian = Ujian::count(); 
+                $jumlahUjian = Ujian::count();
                 return view('user.home', compact('jumlahInformasi', 'jumlahModul', 'jumlahUjian'));
             } elseif ($role == 'admin') {
                 return view('guru.home', ['result' => $outputData]);
