@@ -11,6 +11,14 @@
         <div class="section-body">
             <div class="row">
                 <div class="col-12">
+                    <form class="form-inline mr-auto" method="GET">
+                        <div class="search-element">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+                                data-width="250" id="cari" value="{{$cari}}" name="cari">
+                            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                            <div class="search-backdrop"></div>
+                        </div>
+                    </form>
                     <div>
                         <label for="jenisUjian">Pilih Jenis Ujian:</label>
                         <select id="jenisUjian" onchange="filterNilai()">

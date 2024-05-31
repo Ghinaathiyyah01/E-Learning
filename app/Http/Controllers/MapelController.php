@@ -24,9 +24,17 @@ class MapelController extends Controller
     
         return view('user.modul.materi', compact('modul', 'nama_mapel', 'deskripsi_mapel'));
     }
-    public function indexGuru(){
-        $mapel = Mapel::all();
-        return view('guru.modul.index', compact('mapel'));
+    public function indexGuru(Request $request){
+        $cari = $request->query('cari');
+    
+        if (!empty($cari)) {
+            $mapel = Mapel::where('nama', 'like', '%' . $cari . '%')
+                ->get();
+        } else {
+            $mapel = Mapel::all();
+        }
+    
+        return view('guru.modul.index', compact('mapel','cari'));
     }
     public function create()
     {

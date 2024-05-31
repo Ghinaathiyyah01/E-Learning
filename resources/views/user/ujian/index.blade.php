@@ -8,8 +8,9 @@
                 <div class="breadcrumb-item">Ujian</>
                 </div>
             </div>
-        </div>
-
+        </div>  
+        <br>
+        <br>
         <div class="section-body">
             <div class="row">
                 @foreach ($ujian as $uji)

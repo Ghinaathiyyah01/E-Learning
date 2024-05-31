@@ -23,6 +23,17 @@ class NilaiController extends Controller
     public function indexGuru(Request $request)
     {
         // Mengambil semua jenis ujian untuk ditampilkan di dropdown
+        $cari = $request->query('cari');
+    
+        if (!empty($cari)) {
+            $skor = Nilai::join('users','nilais.user_id','=','users.id')
+                ->where('nilai', 'like', '%' . $cari . '%')
+                ->orWhere('user_id', 'like', '%' . $cari . '%')
+                ->get();
+        } else {
+            $skor = Nilai::all();
+        }
+
         $semuaUjian = Ujian::all();
 
         // Mengambil data nilai
@@ -35,7 +46,7 @@ class NilaiController extends Controller
 
         // Mengambil data nilai setelah dilakukan filter (jika ada)
         $nilai = $nilai->get();
-        return view('guru.nilai.index', compact('nilai', 'semuaUjian'));
+        return view('guru.nilai.index', compact('nilai', 'skor','cari', 'semuaUjian'));
     }    
     public function delete($id){
         $nilai = Nilai::find($id);

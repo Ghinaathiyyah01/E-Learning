@@ -10,9 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class UjianController extends Controller
 { 
-    public function index(){
+    public function index(Request $request){
+        $cari = $request->query('cari');
+    
+        if (!empty($cari)) {
+            $ujian = Ujian::where('nama', 'like', '%' . $cari . '%')
+                ->get();
+        } else {
+            $ujian = Ujian::all();
+        }
         $ujian = Ujian::all();
-        return view('user.ujian.index', compact('ujian'));
+        return view('user.ujian.index', compact('ujian','cari'));
     }
     public function ujian($id)
     { 
@@ -68,9 +76,18 @@ class UjianController extends Controller
         // Tampilkan halaman dengan data nilai
         return view('user.ujian.hasil', compact('nilai'));
     }
-    public function indexGuru(){
-        $ujian = Ujian::all();
-        return view('guru.ujian.index', compact('ujian'));
+    public function indexGuru(Request $request){
+        $cari = $request->query('cari');
+    
+        if (!empty($cari)) {
+            $ujian = Ujian::where('nama', 'like', '%' . $cari . '%')
+                ->get();
+        } else {
+            $ujian = Ujian::all();
+        }
+    
+        return view('guru.ujian.index', compact('ujian','cari'));
+    
     }
     public function create()
     {
