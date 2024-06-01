@@ -10,30 +10,28 @@
         </div>
         <div class="section-body">
             <div class="row">
-                <div class="col-12">
-                    <form class="form-inline mr-auto" method="GET">
+                <div class="col-md-6">
+                    <form class="form-inline" method="GET">
                         <div class="search-element">
                             <input class="form-control" type="search" placeholder="Search" aria-label="Search"
                                 data-width="250" id="cari" value="{{$cari}}" name="cari">
                             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-                            <div class="search-backdrop"></div>
                         </div>
                     </form>
-                    <div>
-                        <label for="jenisUjian">Pilih Jenis Ujian:</label>
-                        <select id="jenisUjian" onchange="filterNilai()">
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{-- <label for="jenisUjian">Pilih Jenis Ujian:</label> --}}
+                        <select class="form-control" id="jenisUjian" onchange="filterNilai()">
                             <option value="">Semua Ujian</option>
                             @foreach ($semuaUjian as $ujian)
                                 <option value="{{ $ujian->id }}">{{ $ujian->nama }}</option>
                             @endforeach
                         </select>
                     </div>
-                </div>
+                </div>                
                 <div class="col-12">
                     <div class="card">
-                        {{-- <div class="card-header">
-                            <h4><a href="/guru/ujian/create" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Tambah Data</a></h4>
-                        </div> --}}
                         <div class="card-body">
                             <table class="table table-hover">
                                 <thead>
@@ -74,6 +72,9 @@
                                     @endforeach
                                 </tbody>
                             </table>                                
+                        </div>
+                        <div class="p-4">
+                            {{ $nilai->links() }}
                         </div>
                     </div>
                 </div>

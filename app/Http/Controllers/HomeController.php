@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Charts\GuruChart;
 use App\Models\Informasi;
+use App\Models\Mapel;
 use App\Models\Modul;
 use App\Models\Nilai;
 use App\Models\Ujian;
@@ -69,7 +70,7 @@ class HomeController extends Controller
                 $jumlahInformasi = Informasi::count();
 
                 // Menghitung jumlah modul
-                $jumlahModul = Modul::count();
+                $jumlahModul = Mapel::count();
 
                 // Menghitung jumlah ujian
                 $jumlahUjian = Ujian::count();

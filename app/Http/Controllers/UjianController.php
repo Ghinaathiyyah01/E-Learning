@@ -83,7 +83,7 @@ class UjianController extends Controller
             $ujian = Ujian::where('nama', 'like', '%' . $cari . '%')
                 ->get();
         } else {
-            $ujian = Ujian::all();
+            $ujian = Ujian::simplepaginate(5);
         }
     
         return view('guru.ujian.index', compact('ujian','cari'));

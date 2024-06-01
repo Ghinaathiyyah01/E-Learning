@@ -11,7 +11,7 @@ class SoalController extends Controller
     public function indexGuru($ujian_id)
     {
         session(['ujian_id' => $ujian_id]);
-        $soal = Soal::where('ujian_id', $ujian_id)->get();
+        $soal = Soal::where('ujian_id', $ujian_id)->simplepaginate(5);
         return view('guru.soal.index', compact('soal', 'ujian_id'));
     }
 

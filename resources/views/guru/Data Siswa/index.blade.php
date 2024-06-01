@@ -14,7 +14,7 @@
                     <form class="form-inline mr-auto" method="GET">
                         <div class="search-element">
                             <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                                data-width="250" id="cari" value="{{$cari}}" name="cari">
+                                data-width="250" id="cari" value="{{ $cari }}" name="cari">
                             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
                             <div class="search-backdrop"></div>
                         </div>
@@ -49,8 +49,10 @@
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="/guru/data-siswa/update/{{ $s->id }}">Edit</a>
-                                                        <form action="{{ route('guru.data-siswa.delete', $s->id) }}" method="POST"
+                                                        <a class="dropdown-item"
+                                                            href="/guru/data-siswa/update/{{ $s->id }}">Edit</a>
+                                                        <form action="{{ route('guru.data-siswa.delete', $s->id) }}"
+                                                            method="POST"
                                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus item ini?');">
                                                             @csrf
                                                             @method('DELETE')
@@ -63,6 +65,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div>
+                                {{ $siswa->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

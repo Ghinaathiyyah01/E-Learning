@@ -11,17 +11,19 @@
         <div class="section-body">
             <div class="row">
                 <div class="col-12">
-                    <form class="form-inline mr-auto" method="GET">
-                        <div class="search-element">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                                data-width="250" id="cari" value="{{$cari}}" name="cari">
-                            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                    <div class="d-flex justify-content-between mb-3">
+                        <form class="form-inline" method="GET">
+                            <div class="search-element">
+                                <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+                                    data-width="250" id="cari" value="{{$cari}}" name="cari">
+                                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                        <div>
+                            <a href="/guru/modul/create" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Tambah Data</a>
                         </div>
-                    </form>
+                    </div>
                     <div class="card">
-                        <div class="card-header">
-                            <h4><a href="/guru/modul/create" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Tambah Data</a></h4>
-                        </div>
                         <div class="card-body">
                             <table class="table table-hover">
                                 <thead>
@@ -38,8 +40,8 @@
                                     @foreach ($mapel as $map)
                                     <tr>
                                         <th scope="row">{{ $no++ }}</th>
-                                        <td><img src="{{ asset('Mapel Gambar') . '/' . $map->gambar }}"
-                                            alt="" class="img-fluid" width="100"></td>
+                                        <td><img  src="{{ asset('Mapel Gambar') . '/' . $map->gambar }}"
+                                            alt="" class="img-fluid m-2" width="100"></td>
                                         <td>{{ $map->nama }}</td>
                                         <td>{{ $map->deskripsi }}</td>
                                         <td>
@@ -63,6 +65,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="p-4">
+                            {{ $mapel->links() }}
                         </div>
                     </div>
                 </div>

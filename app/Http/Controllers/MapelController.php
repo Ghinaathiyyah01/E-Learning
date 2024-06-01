@@ -31,7 +31,7 @@ class MapelController extends Controller
             $mapel = Mapel::where('nama', 'like', '%' . $cari . '%')
                 ->get();
         } else {
-            $mapel = Mapel::all();
+            $mapel = Mapel::simplepaginate(2);
         }
     
         return view('guru.modul.index', compact('mapel','cari'));

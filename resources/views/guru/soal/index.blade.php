@@ -67,6 +67,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="p-4">
+                            {{ $soal->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
