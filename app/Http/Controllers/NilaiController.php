@@ -44,7 +44,7 @@ public function indexGuru(Request $request)
     }
 
     // Mengambil data nilai setelah dilakukan filter dan pencarian (jika ada)
-    $nilai = $nilai->simplepaginate(5);
+    $nilai = $nilai->simplepaginate(10);
 
     $semuaUjian = Ujian::all();
 

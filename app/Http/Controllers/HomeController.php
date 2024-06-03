@@ -31,9 +31,12 @@ class HomeController extends Controller
 
         // Define colors based on ujian_nama
         $colorsByUjianNama = [
-            'Ujian Tengah Semester' => '#ffab00', // Yellow for Ujian Tengah Semester
-            'Ujian Akhir Semester' => '#007bff', // Blue for UAS
+            'Ujian Tengah Semester (Ganjil)' => '#ffab00', // Yellow for Ujian Tengah Semester
+            'Ujian Akhir Semester (Ganjil)' => '#007bff', // Blue for UAS
             'Kuis 1' => '#71dd37', // Green for Ujian 3
+            'Ujian Tengah Semester (Genap)' => '#ffab00',
+            'Ujian Akhir Semester (Genap)' => '#007bff',
+            'Kuis 2' => '#71dd37',
             // Add more colors as needed
         ];
 
