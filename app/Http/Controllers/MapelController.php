@@ -29,9 +29,9 @@ class MapelController extends Controller
     
         if (!empty($cari)) {
             $mapel = Mapel::where('nama', 'like', '%' . $cari . '%')
-                ->get();
+                ->simplepaginate(3);
         } else {
-            $mapel = Mapel::simplepaginate(2);
+            $mapel = Mapel::simplepaginate(3);
         }
     
         return view('guru.modul.index', compact('mapel','cari'));

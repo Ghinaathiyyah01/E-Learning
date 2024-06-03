@@ -81,7 +81,7 @@ class UjianController extends Controller
     
         if (!empty($cari)) {
             $ujian = Ujian::where('nama', 'like', '%' . $cari . '%')
-                ->get();
+                ->simplepaginate(5);
         } else {
             $ujian = Ujian::simplepaginate(5);
         }

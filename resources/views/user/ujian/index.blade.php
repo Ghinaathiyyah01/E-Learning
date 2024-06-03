@@ -23,6 +23,8 @@
                                         $image = '/img/uas.png';
                                     } elseif (str_starts_with($uji->nama, 'Ujian Tengah Semester')) {
                                         $image = '/img/uts.png';
+                                    } elseif (str_starts_with($uji->nama, 'Kuis')) {
+                                        $image = '/img/kuis.jpg';
                                     }
                                 @endphp
                                 <div class="article-image" data-background="{{ $image }}">
